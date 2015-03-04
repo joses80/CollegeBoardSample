@@ -1,0 +1,35 @@
+<project>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="./" destdir="build/classes" classpath="lib/junit-4.12.jar;" includeantruntime="false"/>
+    </target>
+    
+  
+     <target name="runTest">
+    <java classname="com.test.NumberGuessTestSuite">
+         <arg value="-h"/>
+         <classpath>
+           <pathelement location="lib/junit-4.12.jar"/>
+           <pathelement location="lib/hamcrest-core-1.3.jar"/>
+           <pathelement location="build/classes"/>
+           <pathelement path="${java.class.path}"/>
+         </classpath>
+       </java>
+        </target>
+    
+      <target name="runProgram">
+    <java classname="com.test.RunNumberGame">
+         <arg value="-h"/>
+         <classpath>
+           <pathelement location="build/classes"/>
+           <pathelement path="${java.class.path}"/>
+         </classpath>
+       </java>
+        </target>
+
+</project>
